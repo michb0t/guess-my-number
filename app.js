@@ -34,19 +34,9 @@ checkBtn.addEventListener("click", function() {
     } else {
         correctGuess();
     }
+
+    checkScore();
 })
-
-//Execute correct guess function
-
-function correctGuess() {
-    msg.textContent = "Correct!"
-    document.body.style.backgroundColor = "green";
-    if (score.textContent > hScore.textContent) {
-        hScore.textContent = score.textContent;
-    }
-    number.textContent = ranNum;
-    checkBtn.setAttribute("disabled", "true")
-}
 
 // reset button 
 
@@ -64,3 +54,22 @@ function generateNum() {
     return Math.floor(Math.random() * 20) + 1; 
 }
 
+//Execute correct guess function
+
+function correctGuess() {
+    msg.textContent = "Correct!"
+    document.body.style.backgroundColor = "green";
+    if (score.textContent > hScore.textContent) {
+        hScore.textContent = score.textContent;
+    }
+    number.textContent = ranNum;
+    checkBtn.setAttribute("disabled", "true")
+}
+
+function checkScore() {
+    if (score.textContent === "0") {
+        score.textContent ="0";
+        checkBtn.setAttribute("disabled", "true")
+        msg.textContent = "You lose. Press again to restart game"  
+    }
+}
